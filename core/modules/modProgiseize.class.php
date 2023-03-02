@@ -147,7 +147,7 @@ class modProgiseize extends DolibarrModules
         // Main menu entries to add
         $this->menu = array();
         $r = 0;
-        $this->menu[$r]=array( 
+        $this->menu[$r]=array(
             'fk_menu'=>0,           // Put 0 if this is a top menu
             'type'=>'top',          // This is a Top menu entry
             'titre'=>'Progiseize',
@@ -168,7 +168,15 @@ class modProgiseize extends DolibarrModules
             'titre'=> 'Assistance',
             'mainmenu'=>'progiseize',
             'leftmenu'=> $this->rights_class,
-            'url'=>'https://dolibarr.progiseize.fr/public/ticket/index.php', 'langs'=>'progiseize@progiseize', 'position'=> $this->module_position, 'enabled'=>'1', 'perms'=>'1','target'=>'_blank', 'user'=>2);
+            'url'=>'https://dolibarr.progiseize.fr/public/ticket/index.php', 
+            'langs'=>'progiseize@progiseize',
+            'position'=> $this->module_position,
+            'enabled'=>'1', 
+            'perms'=>'1',
+            'target'=>'_blank',
+            'user'=>2,
+            'prefix' => '<span class="fas fa-headset" style="color: #6c6aa8;margin-right:3px;"></span> '
+        );
         $r++;
 
     }
