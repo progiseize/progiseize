@@ -1,0 +1,6 @@
+pgsz_listModulesInstalled=List of installed modules
+pgsz_moduleActive=Enabled
+pgsz_moduleInactive=Disabled
+pgsz_moduleUpdateAvailable=Version %s available
+pgsz_moduleUpToDate=Up to date
+pgsz_gotoSetup=Go to setup page
