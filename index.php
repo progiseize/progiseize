@@ -76,7 +76,7 @@ llxHeader('','Modules Progiseize',''); ?>
 
 			<div class="module-card">
 
-				<div class="module-title <?php echo $mod_enabled?'enabled':'disabled'; ?>">
+				<div class="module-title <?php echo $mod->rights_class; ?> <?php echo $mod_enabled?'enabled':'disabled'; ?>">
 					<div class="update-info">
 						<?php if($mod->needUpdate): ?>
 							<span class="need-update"><?php echo $langs->transnoentities('pgsz_moduleUpdateAvailable',$mod->lastVersion); ?></span>
