@@ -44,7 +44,7 @@ class magicForm{
 	  			$max_size = $upload_max;
 	  		endif;
 	  	endif;
-	  	if($conf->maxfilesize < $max_size): return $conf->maxfilesize;
+	  	if($conf->global->MAIN_UPLOAD_DOC < $max_size): return $conf->global->MAIN_UPLOAD_DOC;
 	  	else: return $max_size; endif;
 	}
 
@@ -272,7 +272,7 @@ class magicForm{
 	/**
 	 *	input type SUBMIT
 	 *
-	 *	@param 		string		$htmlname			Name and ID of textarea
+	 *	@param 		string		$htmlname			Name and ID of submit
 	 * 	@param 		string		$value				Submit value
 	 * 	@param   	string		$cancel   			URL of cancel
 	 * 	@param   	string		$morecss   			Add classes to submit
@@ -282,28 +282,74 @@ class magicForm{
 
 		global $langs;
 
-		if($value): $value = 'value="'.$value.'"'; endif;
-
 		$html = '';
 		if($cancelurl):
-			$html.= '<a href="'.$cancelurl.'" class="dolpgs-btn btn-danger" >'.$langs->trans('Cancel').'</a>';
+			$html.= '<a href="'.$cancelurl.'" class="dolpgs-btn btn-danger btn-sm" >'.$langs->trans('Cancel').'</a>';
 		endif;
-		$html.= '<input type="submit" name="'.$htmlname.'" class="dolpgs-btn btn-primary '.$cssclass.'" value="'.$value.'">';
+		$html.= '<input type="submit" name="'.$htmlname.'" class="dolpgs-btn btn-primary '.$cssclass.'" '.$moreattr.'';
+		$html.= $value?' value="'.$value.'"':'';
+		$html.= '>';
 
 		return $html;
 	}
 
-
 	/**
 	 *	Select Languages
 	 *
-	 *	@param 		string		$htmlname			Name and ID of textarea
+	 *	@param 		string		$htmlname			Name and ID of select
 	 * 	@param 		string		$selected_value		Value if GET/POST value is empty
 	 */
 	public function selectLanguage($htmlname,$selected_value = ''){
 
 		$formadmin = new FormAdmin($this->db);
 		return $formadmin->select_language($selected_value,$htmlname);
+	}
+
+	/**
+	 *	Select2 for Array - Similar to $form->selectarray
+	 *
+	 *	@param 		string		$htmlname			Name and ID of select
+	 *	@param 		array		$arrayvalues		Array of values
+	 * 	@param 		string		$selected_value		Value if GET/POST value is empty
+	 *  @param 		bool		$empty				Show empty value
+	 *  @param   	string		$morecss   			Add classes to submit
+	 *  @param   	string		$icon   			Icon class
+	 *  @param   	string		$inline_label   	Inline label after select
+	 *  @param   	bool		$value_as_key   	Use value as key
+	 */
+	public function select2($htmlname,$arrayvalues,$selected_value = '',$empty = false,$morecss = '',$icon = '',$inline_label = '',$value_as_key = 0,$moreattr = ''){
+
+		$selected_value = GETPOSTISSET($htmlname)?GETPOST($htmlname):$selected_value;
+		if(in_array($htmlname, $this->error_fields)): $morecss = 'field-error '.$morecss; endif;
+
+		$html = '';
+
+		if($icon):
+			$html.= '<i class="'.$icon.'" style="color: #6c6aa8;margin-right:3px"></i>';
+		endif;
+		if($inline_label):
+			$html.= '<label for="'.$htmlname.'" class="dolpgs-semibold">'.$inline_label.'</label>';
+		endif;
+		$html.= $this->form->selectarray($htmlname,$arrayvalues,$selected_value,$empty,0,$value_as_key,$moreattr,0,0,0,'',$morecss);
+
+		return $html;
+	}
+
+	/**
+	 *	Select projects
+	 *
+	 *	@param 		string		$htmlname			Name and ID of textarea
+	 * 	@param 		string		$selected_value		Value if GET/POST value is empty
+	 * 	@param 		bool		$empty				Show empty value
+	 * 	@param 		bool		$discard_closed		Show closed projects
+	 * 	@param   	string		$morecss   			Add classes to submit
+	 */
+	public function selectProjets($htmlname,$selected_value = '',$empty = false,$discard_closed = 1,$morecss = ''){
+
+		require_once DOL_DOCUMENT_ROOT.'/core/class/html.formprojet.class.php';
+
+		$fp = new FormProjets($this->db);
+		return $fp->select_projects(-1,$selected_value,$htmlname,24,0,$empty,$discard_closed,0,0,0,'',1,0,$morecss);
 	}
 
 
@@ -314,23 +360,7 @@ class magicForm{
 	
 
 	//
-	public function select2($htmlname,$arrayvalues,$selected_value = '',$empty = false,$morecss = '',$icon = '',$inline_label = '',$value_as_key = 0){
-
-		$selected_value = GETPOSTISSET($htmlname)?GETPOST($htmlname):$selected_value;
-		if(in_array($htmlname, $this->error_fields)): $morecss = 'field-error '.$morecss; endif;
-
-		$html = '<div class="pgs-field">';
-			if($icon):
-				$html.= '<i class="'.$icon.'" style="color: #6c6aa8;margin-right:3px"></i>';
-			endif;
-			if($inline_label):
-				$html.= '<label for="'.$htmlname.'" class="dolpgs-semibold">'.$inline_label.'</label>';
-			endif;
-			$html.= $this->form->selectarray($htmlname,$arrayvalues,$selected_value,$empty,0,$value_as_key,'',0,0,0,'',$morecss);
-		$html.= '</div>';
-
-		return $html;
-	}
+	
 
 	public function inputDropFile($htmlname = '',$multiple = 0){
 
