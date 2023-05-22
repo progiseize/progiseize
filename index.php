@@ -37,7 +37,6 @@ $langs->load("other");
 // Protection if external user
 if ($user->societe_id > 0): accessforbidden(); endif;
 
-
 /*******************************************************************
 * VARIABLES
 ********************************************************************/

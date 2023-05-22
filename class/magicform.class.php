@@ -44,7 +44,7 @@ class magicForm{
 	  			$max_size = $upload_max;
 	  		endif;
 	  	endif;
-	  	if($conf->maxfilesize < $max_size): return $conf->maxfilesize;
+	  	if($conf->global->MAIN_UPLOAD_DOC < $max_size): return $conf->global->MAIN_UPLOAD_DOC;
 	  	else: return $max_size; endif;
 	}
 
@@ -286,7 +286,7 @@ class magicForm{
 		if($cancelurl):
 			$html.= '<a href="'.$cancelurl.'" class="dolpgs-btn btn-danger btn-sm" >'.$langs->trans('Cancel').'</a>';
 		endif;
-		$html.= '<input type="submit" name="'.$htmlname.'" class="dolpgs-btn btn-primary '.$cssclass.'"';
+		$html.= '<input type="submit" name="'.$htmlname.'" class="dolpgs-btn btn-primary '.$cssclass.'" '.$moreattr.'';
 		$html.= $value?' value="'.$value.'"':'';
 		$html.= '>';
 
@@ -321,6 +321,8 @@ class magicForm{
 
 		$selected_value = GETPOSTISSET($htmlname)?GETPOST($htmlname):$selected_value;
 		if(in_array($htmlname, $this->error_fields)): $morecss = 'field-error '.$morecss; endif;
+
+		$html = '';
 
 		if($icon):
 			$html.= '<i class="'.$icon.'" style="color: #6c6aa8;margin-right:3px"></i>';

@@ -3,11 +3,13 @@
 [comment]: <> (TODO)
 
 ***
+### 1.4.1 (22/05/2023)
+* NEW - Ajout de la classe ProgiCron
+
 ### 1.4.0 (02/03/2023)
 * NEW - Ajout de la classe MagicForm
 * NEW - Nouveau fichier CSS commun, le fichier progiseize.css est amené à disparaitre
 * MAJ - Améliorations liste des modules installés
-
 
 ### 1.3.2 (29/09/2022)
 * MAJ - Modification des permissions, pensez à verifier les droits utilisateurs
