@@ -85,17 +85,26 @@ class modProgiseize extends DolibarrModules
 
         // Define some features supported by module (triggers, login, substitutions, menus, css, etc...)
         $this->module_parts = array(
-            'css' => array(
-                'progiseize/assets/css/dolpgs.css',
-                'progiseize/assets/css/progiseize.css', // OLD COMPATIBILITY
-            ),
+            'triggers' => 0,
+            'login' => 0,
+            'substitutions' => 0,
+            'menus' => 0,
+            'theme' => 0,
+            'tpl' => 0,
+            'barcode' => 0, 
+            'models' => 0,
+            'css' => array(),
+            'js' => array(),
+            'hooks' => array(),
+            'dir' => array(),
+            'workflow' => array(),
         );
 
         // Data directories to create when module is enabled.
         $this->dirs = array();
 
         // Config pages. Put here list of php page, stored into xxx/admin directory, to use to setup module.
-        $this->config_page_url = 'setup.php@progiseize';
+        $this->config_page_url = '';
 
         // Dependencies
         // A condition to hide module

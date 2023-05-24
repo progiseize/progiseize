@@ -47,17 +47,13 @@ $list_modules = $pgsz->getModulesInstalled();
 /*******************************************************************
 * ACTIONS
 ********************************************************************/
-/*if(!empty($mod->menu)): 
-						$module_link = dol_buildpath($mod->menu[0]['url'],1);
-						$module_label = '<a href="'.$module_link.'" title="'.$langs->trans('pgsz_alt_module_goto').'">';
-						$module_label .= $mod->name; 
-						$module_label .= '</a>'; 
-					else: $module_label = $mod->name; endif;*/
+
+
 /***************************************************
 * VIEW
 ****************************************************/
 
-llxHeader('','Modules Progiseize',''); ?>
+llxHeader('','Modules Progiseize','','','','',array(),array('progiseize/assets/css/dolpgs.css'),'','progiseize-listmodule'); ?>
 
 <?php // dol_htmloutput_errors($errmsg); ?>
 

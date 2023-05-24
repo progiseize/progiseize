@@ -5,6 +5,7 @@
 ***
 ### 1.4.1 (22/05/2023)
 * NEW - Ajout de la classe ProgiCron
+* FIX - Remove module_parts('css') - Les modules nécéssitant le css doivent appeller les styles eux-mêmes
 
 ### 1.4.0 (02/03/2023)
 * NEW - Ajout de la classe MagicForm
