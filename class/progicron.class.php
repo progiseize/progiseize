@@ -18,7 +18,6 @@ class ProgiCron {
     /**
      *  Appliquer x chiffres sur les comptes comptables
      *
-     *  @param      DoliDB      $db                             Database handler
      *  @param      int         $accountingaccount_length       Length wanted
      */
     public function setAccountingAccountLength($accountingaccount_length){
