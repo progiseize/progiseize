@@ -66,7 +66,6 @@ class ProgiCron {
         return 0;
     }
 
-
 }
 
 ?>

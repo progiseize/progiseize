@@ -1,8 +1,14 @@
-# Progiseize
+# Progilib
 
 [comment]: <> (TODO)
 
 ***
+### 2.0.0 (31/08/2023)
+* MAJ - Module renommé en PROGILIB
+* MAJ - La classe MagicForm devient ProgiForm
+* DEL - Menu du module supprimé - Sera réintégré autrement via le menu outils
+* DEL - Suppresions des fichiers devenus inutiles
+
 ### 1.4.1 (22/05/2023)
 * NEW - Ajout de la classe ProgiCron
 * FIX - Remove module_parts('css') - Les modules nécéssitant le css doivent appeller les styles eux-mêmes
