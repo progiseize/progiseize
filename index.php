@@ -22,27 +22,13 @@ $res=0;
 if (! $res && file_exists("../main.inc.php")): $res=@include '../main.inc.php'; endif;
 if (! $res && file_exists("../../main.inc.php")): $res=@include '../../main.inc.php'; endif;
 
-//require_once DOL_DOCUMENT_ROOT.'/admin/dolistore/class/dolistore.class.php';
-
-dol_include_once('./progiseize/lib/progiseize.lib.php');
-dol_include_once('./progiseize/class/progiseizemodule.class.php');
-
-// ON RECUPERE LA VERSION DE DOLIBARR
-$version = explode('.', DOL_VERSION);
-
-// Load traductions files requiredby by page
-$langs->load("companies");
-$langs->load("other");
-
 // Protection if external user
-if ($user->societe_id > 0): accessforbidden(); endif;
+if ($user->socid > 0): accessforbidden(); endif;
 
 /*******************************************************************
 * VARIABLES
 ********************************************************************/
-$pgsz = new ProgiseizeModule($db);
 
-$list_modules = $pgsz->getModulesInstalled();
 
 /*******************************************************************
 * ACTIONS
@@ -52,64 +38,10 @@ $list_modules = $pgsz->getModulesInstalled();
 /***************************************************
 * VIEW
 ****************************************************/
+$array_js = array();
+$array_css = array();
 
-llxHeader('','Modules Progiseize','','','','',array(),array('progiseize/assets/css/dolpgs.css'),'','progiseize-listmodule'); ?>
-
-<?php // dol_htmloutput_errors($errmsg); ?>
-
-<!-- CONTENEUR GENERAL -->
-<div class="dolpgs-main-wrapper">
-
-	<h1><i class="far fa-list-alt"></i> <?php echo $langs->transnoentities('pgsz_listModulesInstalled'); ?></h1>
-
-	<div class="dolpgs-flex-wrapper">
-	<?php foreach ($list_modules as $mod):
-
-		$mod_enabled = $conf->global->{$mod->const_name}; ?>
-
-		<div class="dolpgs-flex-item flex-4">
-
-			<div class="module-card">
-
-				<div class="module-title <?php echo $mod->rights_class; ?> <?php echo $mod_enabled?'enabled':'disabled'; ?>">
-					<div class="update-info">
-						<?php if($mod->needUpdate): ?>
-							<span class="need-update"><?php echo $langs->transnoentities('pgsz_moduleUpdateAvailable',$mod->lastVersion); ?></span>
-						<?php else: ?>
-							<span><?php echo $langs->trans('pgsz_moduleUpToDate'); ?> <i class="fas fa-check"></i></span>
-						<?php endif; ?>
-					</div>
-					<h3><?php echo $mod->name; ?></h3>
-				</div>
-				<p class="module-desc"><?php echo $langs->transnoentities($mod->descriptionlong); ?></p>
-
-				<ul class="module-infos-list">
-
-					<li class="module-info">
-						<span class="dolpgs-font-semibold">Statut : </span>
-						<?php echo ($mod_enabled)?$langs->transnoentities('pgsz_moduleActive'):$langs->transnoentities('pgsz_moduleInactive'); ?>
-						
-					</li>
-
-					<li class="module-info">
-						<span class="dolpgs-font-semibold">Version : </span>
-						<span class="<?php if($mod->needUpdate): echo 'version-outdated'; endif; ?>"><?php echo $mod->version; ?></span>
-					</li>
-
-					<?php // LIEN VERS LA PAGE D'OPTION ?>
-					<?php if(!empty($mod->config_page_url)): $opt = explode('@', $mod->config_page_url);  ?>
-						<li class="module-info module-setup"><a href="<?php echo '../'.$opt[1].'/admin/'.$opt[0]; ?>" title="<?php print $langs->trans('pgsz_gotoSetup'); ?>"><i class="fas fa-cog"></i></a></li>
-					<?php endif; ?>
-
-				</ul>
-			</div>
-		</div>
-
-	<?php endforeach; ?>
-
-
-</div>
-
+llxHeader('','','','','','',$array_js,$array_css,'',''); ?>
 
 
 <?php

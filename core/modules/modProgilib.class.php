@@ -30,7 +30,7 @@ include_once DOL_DOCUMENT_ROOT.'/core/modules/DolibarrModules.class.php';
 /**
  *  Description and activation class for module 
  */
-class modProgiseize extends DolibarrModules
+class modProgiLib extends DolibarrModules
 {
     /**
      * Constructor. Define names, constants, directories, boxes, permissions
@@ -47,7 +47,7 @@ class modProgiseize extends DolibarrModules
         $this->numero = 300300; // TODO Go on page https://wiki.dolibarr.org/index.php/List_of_modules_id to reserve an id number for your module
 
         // Key text used to identify module (for permissions, menus, etc...)
-        $this->rights_class = 'progiseize';
+        $this->rights_class = 'progilib';
 
         // Family can be 'base' (core modules),'crm','financial','hr','projects','products','ecm','technic' (transverse modules),'interface' (link with external tools),'other','...'
         // It is used to group modules by family in module setup page
@@ -61,7 +61,7 @@ class modProgiseize extends DolibarrModules
         $this->name = preg_replace('/^mod/i', '', get_class($this));
 
         // Module description
-        $this->description = "Module de base Progiseize. Suivi des mises à jour de modules.";
+        $this->description = "Framework Progiseize";
         // Used only if file README.md and README-LL.md not found.
         $this->descriptionlong = "Module de base Progiseize. Inclus des bibliothèques, des fonctions et des styles multi-modules.";
 
@@ -70,9 +70,9 @@ class modProgiseize extends DolibarrModules
         $this->editor_url = 'https://progiseize.fr';
 
         // Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated', 'experimental_deprecated' or a version string like 'x.y.z'
-        $this->version = '1.4.1';
+        $this->version = '2.0.0';
         // Url to the file with your last numberversion of this module
-        $this->url_last_version ="https://progiseize.fr/modules_info/".get_class($this)."_lastversion.txt";
+        $this->url_last_version ="https://progiseize.fr/modules_info/lastversion.php?module=".$this->numero;
 
         // Key used in llx_const table to save module status enabled/disabled 
         $this->const_name = 'MAIN_MODULE_'.strtoupper($this->name);
@@ -81,7 +81,7 @@ class modProgiseize extends DolibarrModules
         // If file is in theme/yourtheme/img directory under name object_pictovalue.png, use this->picto='pictovalue'
         // If file is in module/img directory under name object_pictovalue.png, use this->picto='pictovalue@module'
         // To use a supported fa-xxx css style of font awesome, use this->picto='xxx'
-        $this->picto = 'progiseize@progiseize';
+        $this->picto = 'fa-flask_fas_#6c6aa8';
 
         // Define some features supported by module (triggers, login, substitutions, menus, css, etc...)
         $this->module_parts = array(
@@ -115,7 +115,7 @@ class modProgiseize extends DolibarrModules
         $this->conflictwith = array(); // List of module class names as string this module is in conflict with. Example: array('modModuleToDisable1', ...)
 
         // The language file dedicated to your module
-        $this->langfiles = array("progiseize@progiseize");
+        $this->langfiles = array("progilib@progilib");
 
         // Prerequisites
         $this->phpmin = array(7, 0); // Minimum version of PHP required by module
@@ -156,37 +156,23 @@ class modProgiseize extends DolibarrModules
         // Main menu entries to add
         $this->menu = array();
         $r = 0;
-        $this->menu[$r]=array(
-            'fk_menu'=>0,           // Put 0 if this is a top menu
-            'type'=>'top',          // This is a Top menu entry
-            'titre'=>'Progiseize',
-            'mainmenu'=>'progiseize',
-            'leftmenu'=>'',
-            'url'=>'/progiseize/index.php',
-            'langs'=>'progiseize@progiseize',  // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
-            'position'=>$this->numero.''.$r,
-            'enabled'=>'1',         // Define condition to show or hide menu entry. Use '$conf->monmodule->enabled' if entry must be visible if module is enabled.
-            'perms'=>'1',           // Use 'perms'=>'$user->rights->monmodule->level1->level2' if you want your menu with a permission rules
-            'target'=>'',
-            'user'=>2);             // 0=Menu for internal users, 1=external users, 2=both
-        $r++;
 
-        $this->menu[$r]=array( 
-            'fk_menu'=>'fk_mainmenu=progiseize',
+        /*$this->menu[$r]=array( 
+            'fk_menu'=>'fk_mainmenu=tools',
             'type'=>'left',
-            'titre'=> 'Assistance',
-            'mainmenu'=>'progiseize',
+            'titre'=> 'Progi LIB',
+            'mainmenu'=>'tools',
             'leftmenu'=> $this->rights_class,
-            'url'=>'https://dolibarr.progiseize.fr/public/ticket/index.php', 
-            'langs'=>'progiseize@progiseize',
+            'url'=>'/progi/index.php', 
+            'langs'=>'progilib@progilib',
             'position'=> $this->module_position,
             'enabled'=>'1', 
             'perms'=>'1',
             'target'=>'_blank',
             'user'=>2,
-            'prefix' => '<span class="fas fa-headset" style="color: #6c6aa8;margin-right:3px;"></span> '
+            'prefix' => ''
         );
-        $r++;
+        $r++;*/
 
     }
 

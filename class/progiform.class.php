@@ -3,7 +3,7 @@
 require_once DOL_DOCUMENT_ROOT.'/core/class/html.formfile.class.php';
 require_once DOL_DOCUMENT_ROOT.'/core/class/html.formadmin.class.php';
 
-class magicForm{
+class ProgiForm{
 
 	public $maxfilesize = '';
 
@@ -12,6 +12,7 @@ class magicForm{
 
 	public $error_fields = array();
 	public $error_class = 'field-error';
+	public $errors = array();
 
 	public $db;
 	public $form;
