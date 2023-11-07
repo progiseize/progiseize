@@ -3,6 +3,12 @@
 [comment]: <> (TODO)
 
 ***
+### 
+* MAJ - Ajout de la variable translate pour la fonction select2
+
+### 2.0.1 
+* MAJ - Amélioration inputTime: possibilité de restreindre la plage horaire
+
 ### 2.0.0 (31/08/2023)
 * MAJ - Module renommé en PROGILIB
 * MAJ - La classe MagicForm devient ProgiForm

@@ -201,15 +201,21 @@
 * 
 * ******************************************/
 h3.dolpgs-table-title {color: var(--colorprimary);font-weight: 700;font-size: 1.1em;margin: 16px 0;}
-h3.dolpgs-table-title:before {display: inline-block;content: "";height: 14px;width: 2px;background: var(--colorfull);margin-bottom: -1px;margin-right: 8px;}
+h3.dolpgs-table-title:before {display: inline-block;content: "";height: 14px;width: 2px;background: var(--colorsecondary);margin-bottom: -1px;margin-right: 8px;}
 
+.dolpgs-table-title-flexwrapper {display: flex;margin: 16px 0;justify-content: space-between;align-items: flex-end;}
+.dolpgs-table-title-flexwrapper h3.dolpgs-table-title {margin: 0;}
+
+/* TABLE 1 */
 .dolpgs-table {font-family: 'Poppins',sans-serif;border-collapse: collapse;width: 100%;margin-bottom: 24px;}
 .dolpgs-table tbody tr.dolpgs-thead {border: 1px solid var(--colorprimary);}
-.dolpgs-table tbody tr.dolpgs-thead th {border: 1px solid var(--colorprimary);background: var(--colorfillgray2);padding: 12px;color: var(--colorprimary);font-weight: 700;text-transform: uppercase;font-size: 0.9em;font-family: 'Poppins',sans-serif;text-align: left;}
+.dolpgs-table tbody tr.dolpgs-thead th {border: 1px solid var(--colorprimary);background: var(--colorfillgray2);padding: 12px;color: var(--colorprimary);font-weight: 600;text-transform: uppercase;font-size: 0.9em;font-family: 'Poppins',sans-serif;text-align: left;}
+.dolpgs-table tbody tr.dolpgs-thead th a {font-weight: 600 !important;color: var(--colorprimary) !important;}
 .dolpgs-table tbody tr.dolpgs-thead.noborderside th {border: none;}
 .dolpgs-table tbody tr.dolpgs-thead th.center {text-align: center;}
 .dolpgs-table tbody tr.dolpgs-thead th.right {text-align: right;}
 .dolpgs-table tbody tr.dolpgs-thead.vtop {vertical-align: top;}
+.dolpgs-table tbody tr.dolpgs-thead.onlyborder-bottom {border: none;border-bottom: 1px solid var(--colorprimary);}
 
 .dolpgs-table tbody tr.dolpgs-tbody {padding: 16px 12px;border: 1px solid var(--colorprimary);}
 .dolpgs-table tbody tr.dolpgs-tbody.withoutborder {border: none;}
@@ -225,3 +231,13 @@ h3.dolpgs-table-title:before {display: inline-block;content: "";height: 14px;wid
 .dolpgs-table tbody tr.dolpgs-tbody:hover {background: var(--colorfillgray) !important;}
 .dolpgs-table tbody tr.dolpgs-tbody.vtop {vertical-align: top;}
 .dolpgs-table.dolpgs-nohovertable tbody tr.dolpgs-tbody:hover {background: transparent !important;}
+
+.dolpgs-table tbody tr.dolpgs-tbody.tbody-oddeven:nth-child(odd) {background: var(--colorfillgray);}
+.dolpgs-table tbody tr.dolpgs-tbody.tbody-oddeven:hover {background: var(--colorfillgray2) !important;}
+
+/* TABLE 2 */
+.dolpgs-table.tab-light {font-family: 'Poppins',sans-serif;border-collapse: collapse;width: 100%;margin-bottom: 24px;}
+.dolpgs-table.tab-light tbody tr.dolpgs-thead {border: none;}
+.dolpgs-table.tab-light tbody tr.dolpgs-thead th {border-bottom: 1px solid var(--colorprimary);}
+.dolpgs-table.tab-light tbody tr.dolpgs-tbody {border: none}
+.dolpgs-table-light tbody tr.dolpgs-tbody.nopadding td{padding: 0;}
