@@ -224,7 +224,7 @@ class ProgiForm{
 	 *	@param 		string		$selected_m			Selected Minutes
 	 *  @param   	string		$morecss   			Add classes to input
 	 */
-	public function inputTime($htmlname,$selected_h = '',$selected_m = '',$morecss = ''){
+	public function inputTime($htmlname,$selected_h = '',$selected_m = '',$morecss = '',$restricted_array = array()){
 
 		$v_hour = GETPOSTISSET($htmlname.'_h')?GETPOST($htmlname.'_h'):$selected_h;
 		$v_min = GETPOSTISSET($htmlname.'_m')?GETPOST($htmlname.'_m'):$selected_m;
@@ -232,17 +232,34 @@ class ProgiForm{
 		if(in_array($htmlname.'_h', $this->error_fields)): $morecss.= ' field-error'; endif;
 		if(in_array($htmlname.'_m', $this->error_fields)): $morecss.= ' field-error'; endif;
 
+		// HEURES
 		$list_h = array();
-		for ($i=0; $i < 24; $i++):
-			if($i < 10) : $h = '0'.strval($i); else: $h = strval($i); endif;
-			$list_h[$h] = $h;
-		endfor;
+		if(isset($restricted_array['hours'])):
+			$min = isset($restricted_array['hours']['min'])?$restricted_array['hours']['min']:0;
+			$max = isset($restricted_array['hours']['max'])?$restricted_array['hours']['max']:24;
+			for ($i= $min; $i < $max + 1; $i++):
+				if($i < 10) : $h = '0'.strval($i); else: $h = strval($i); endif;
+				$list_h[$h] = $h;
+			endfor;
+		else:
+			for ($i=0; $i < 24; $i++):
+				if($i < 10) : $h = '0'.strval($i); else: $h = strval($i); endif;
+				$list_h[$h] = $h;
+			endfor;
+		endif;
 
+		// MINUTES
 		$list_m = array();
-		for ($i=0; $i < 60; $i++):
-			if($i < 10) : $m = '0'.strval($i); else: $m = strval($i); endif;
-			$list_m[$m] = $m;
-		endfor;
+		if(isset($restricted_array['minutes']) && $restricted_array['minutes'] == 'quarter'):
+			$list_m = array('00'=>'00','15'=>'15','30'=>'30','45'=>'45');
+		elseif(isset($restricted_array['minutes']) && $restricted_array['minutes'] == 'half'):
+			$list_m = array('00'=>'00','30'=>'30');
+		else:
+			for ($i=0; $i < 60; $i++):
+				if($i < 10) : $m = '0'.strval($i); else: $m = strval($i); endif;
+				$list_m[$m] = $m;
+			endfor;
+		endif;
 
 		$html = $this->form->selectarray($htmlname.'_h',$list_h,$v_hour,0,0,0,'',0,0,0,'','minwidth75 '.$morecss);
 		$html.= $this->form->selectarray($htmlname.'_m',$list_m,$v_min,0,0,0,'',0,0,0,'','minwidth75 '.$morecss);
@@ -318,7 +335,7 @@ class ProgiForm{
 	 *  @param   	string		$inline_label   	Inline label after select
 	 *  @param   	bool		$value_as_key   	Use value as key
 	 */
-	public function select2($htmlname,$arrayvalues,$selected_value = '',$empty = false,$morecss = '',$icon = '',$inline_label = '',$value_as_key = 0,$moreattr = ''){
+	public function select2($htmlname,$arrayvalues,$selected_value = '',$empty = false,$morecss = '',$icon = '',$inline_label = '',$value_as_key = 0,$moreattr = '',$translate = 0){
 
 		$selected_value = GETPOSTISSET($htmlname)?GETPOST($htmlname):$selected_value;
 		if(in_array($htmlname, $this->error_fields)): $morecss = 'field-error '.$morecss; endif;
@@ -331,7 +348,7 @@ class ProgiForm{
 		if($inline_label):
 			$html.= '<label for="'.$htmlname.'" class="dolpgs-semibold">'.$inline_label.'</label>';
 		endif;
-		$html.= $this->form->selectarray($htmlname,$arrayvalues,$selected_value,$empty,0,$value_as_key,$moreattr,0,0,0,'',$morecss);
+		$html.= $this->form->selectarray($htmlname,$arrayvalues,$selected_value,$empty,0,$value_as_key,$moreattr,$translate,0,0,'',$morecss);
 
 		return $html;
 	}
