@@ -158,6 +158,26 @@
 
 .dolpgs-main-wrapper .required {color: var(--colordanger);}
 
+/**/
+.dolpgs-statbox {padding: 16px 24px;border: 1px solid var(--colorgraylight);border-radius: 6px;}
+.dolpgs-statbox .statbox-header {display: flex;justify-content: flex-start;align-items: center;}
+.dolpgs-statbox .statbox-header .statbox-icon {font-size: 5em;padding: 0 16px 0 0;color: var(--colorsecondary);font-weight: 700;}
+.dolpgs-statbox .statbox-header .statbox-infos {flex: 1;}
+.dolpgs-statbox .statbox-header .statbox-infos h3 {flex: 1;margin: -3px 0 6px 0;font-size: 1em;font-weight: 600;text-transform: uppercase;color: var(--colorgraylight3);}
+.dolpgs-statbox .statbox-header .statbox-infos .statbox-number {font-size: 1.8em;font-weight: 700;margin: 0;padding: 0;color: var(--colorsecondary);}
+.dolpgs-statbox .statbox-header .statbox-right {text-align: right;font-weight: 600;font-size: 0.9em;color: var(--colorgraylight3);line-height: 2em;}
+.dolpgs-statbox .statbox-header .statbox-right .statbox-success {background: var(--colorsuccess_bg);color: var(--colorsuccess);padding: 3px 5px;border-radius: 4px;}
+.dolpgs-statbox .statbox-header .statbox-right .statbox-warning {background: var(--colorwarning_bg);color: var(--colorwarning);padding: 3px 5px;border-radius: 4px;}
+.dolpgs-statbox .statbox-content {color: var(--colorprimary);}
+.dolpgs-statbox .statbox-content table {width: 100%;border-collapse: collapse;margin: 16px 0;font-size: 0.95em;color: var(--colorgraylight3);}
+.dolpgs-statbox .statbox-content table tr {border-bottom: 1px dashed var(--colorgraylight);}
+.dolpgs-statbox .statbox-content table tbody tr:last-child {border-bottom: 0;}
+.dolpgs-statbox .statbox-content table tr th {padding: 6px 0;}
+.dolpgs-statbox .statbox-content table tr td {padding: 6px 0;font-weight: 500}
+
+.dolpgs-statbox .statbox-footer {text-align: right;font-size: 0.95em;}
+.dolpgs-statbox .statbox-footer a {color:var(--colorgraylight3);font-weight: 500;text-decoration: none;}
+.dolpgs-statbox .statbox-footer a:hover {color:var(--colorsecondary);text-decoration: underline;}
 
 /*******************************************
 *
