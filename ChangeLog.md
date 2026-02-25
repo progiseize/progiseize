@@ -2,12 +2,10 @@
 
 [comment]: <> (TODO)
 
-***
-### 
-* MAJ - Ajout de la variable translate pour la fonction select2
-
 ### 2.0.1 
 * MAJ - Amélioration inputTime: possibilité de restreindre la plage horaire
+* MAJ - Ajout de la variable translate pour la fonction select2
+* MAJ - Update url_last_version with new api endpoint
 
 ### 2.0.0 (31/08/2023)
 * MAJ - Module renommé en PROGILIB
