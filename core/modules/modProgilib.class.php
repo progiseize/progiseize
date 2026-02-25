@@ -72,7 +72,7 @@ class modProgiLib extends DolibarrModules
         // Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated', 'experimental_deprecated' or a version string like 'x.y.z'
         $this->version = '2.0.1';
         // Url to the file with your last numberversion of this module
-        $this->url_last_version ="https://modules-api.progiseize.fr/modules/version/300300"
+        $this->url_last_version ="https://modules-api.progiseize.fr/modules/version/300300";
 
         // Key used in llx_const table to save module status enabled/disabled 
         $this->const_name = 'MAIN_MODULE_'.strtoupper($this->name);
