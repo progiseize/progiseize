@@ -1,0 +1,6 @@
+# English translation for progiseize module
+
+# Module - name, family, descriptions
+Progiseize=ProgiLib
+ProgiseizeDescription=Progiseize Framework
+ProgiseizeDescriptionLong=Progiseize base module. Includes shared libraries, functions and styles used across Progiseize modules.

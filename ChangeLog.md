@@ -2,6 +2,10 @@
 
 [comment]: <> (TODO)
 
+### 2.0.2
+* MAJ : Mise a jour du nom du descripteur et des classes pour Progiseize
+* NEW : Endpoint API custom permettant de lier un contact à un projet
+
 ### 2.0.1 
 * MAJ - Amélioration inputTime: possibilité de restreindre la plage horaire
 * MAJ - Ajout de la variable translate pour la fonction select2
